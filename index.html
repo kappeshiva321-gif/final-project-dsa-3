@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intelligent FAQ Retrieval</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">▣</div>
+        <div><b>FAQ Retrieval</b><span>Knowledge Engine</span></div>
+      </div>
+
+      <nav>
+        <button class="nav-item active" data-page="search">⌕ <span>Search</span></button>
+        <button class="nav-item" data-page="analytics">▥ <span>Analytics</span></button>
+        <button class="nav-item" data-page="admin">⚙ <span>Admin</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="account">kappeshiva321@gmail.com</div>
+        <button id="darkMode" class="dark-btn">☾ &nbsp; Dark mode</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section id="searchPage" class="page active">
+        <header class="hero">
+          <h1>Intelligent FAQ Retrieval</h1>
+          <p>Ask questions in natural language — the hybrid engine combines an inverted index, TF-IDF, fuzzy matching and semantic AI over the connected knowledge base.</p>
+        </header>
+
+        <div class="search-row">
+          <div class="search-box">
+            <span>⌕</span>
+            <input id="query" placeholder="Ask anything about the connected services..." autocomplete="off">
+          </div>
+          <button id="voiceBtn" class="icon-btn" title="Voice input">🎙</button>
+          <button id="searchBtn" class="search-btn">⌕ &nbsp; Search</button>
+        </div>
+
+        <div class="filters">
+          <label>Category
+            <select id="category"><option>All categories</option></select>
+          </label>
+          <label>Source
+            <select id="source"><option>All sources</option></select>
+          </label>
+          <label>Search mode
+            <select id="mode">
+              <option value="hybrid">hybrid</option>
+              <option value="tfidf">tf-idf</option>
+              <option value="fuzzy">fuzzy</option>
+              <option value="semantic">semantic</option>
+            </select>
+          </label>
+          <label>Top K
+            <input id="topK" type="number" min="1" max="20" value="5">
+          </label>
+          <label class="toggle-label"><input id="showScoring" type="checkbox"><span class="toggle"></span> Show scoring</label>
+        </div>
+
+        <div class="demo-title">💡 Try a demo query — including typos:</div>
+        <div id="demoQueries" class="chips"></div>
+
+        <div id="results" class="results"></div>
+      </section>
+
+      <section id="analyticsPage" class="page">
+        <div class="page-heading">
+          <div><h2>Analytics</h2><p>Real-time search and retrieval analytics.</p></div>
+          <button class="outline-btn" id="clearAnalytics">Clear analytics</button>
+        </div>
+        <div class="cards">
+          <div class="stat"><span>Total searches</span><strong id="totalSearches">0</strong></div>
+          <div class="stat"><span>Indexed FAQs</span><strong id="faqCount">0</strong></div>
+          <div class="stat"><span>Indexed terms</span><strong id="termCount">0</strong></div>
+          <div class="stat"><span>Average response</span><strong id="avgTime">0 ms</strong></div>
+        </div>
+        <div class="panel">
+          <h3>Top queries</h3>
+          <div id="topQueries"></div>
+        </div>
+        <div class="panel">
+          <h3>Method distribution</h3>
+          <div id="methodDistribution"></div>
+        </div>
+      </section>
+
+      <section id="adminPage" class="page">
+        <div class="page-heading">
+          <div><h2>Admin</h2><p>Manage the FAQ knowledge base.</p></div>
+        </div>
+        <div class="admin-grid">
+          <form id="faqForm" class="panel form">
+            <h3>Add FAQ</h3>
+            <input id="faqQuestion" required placeholder="Question">
+            <textarea id="faqAnswer" required placeholder="Answer"></textarea>
+            <input id="faqCategory" required placeholder="Category">
+            <input id="faqSource" required placeholder="Source">
+            <button class="search-btn" type="submit">Add FAQ</button>
+          </form>
+          <div class="panel">
+            <h3>Knowledge base</h3>
+            <div id="faqTable"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
